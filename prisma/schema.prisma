@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @unique @default(uuid())
+  email     String    @unique
+  name      String
+  password  String
+  createdAt DateTime  @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+  Habit     Habit[]
+  Goal      Goal[]
+
+  @@map("users")
+}
+
+model Habit {
+  id          String    @unique @default(uuid())
+  name        String
+  description String
+  createdAt   DateTime  @map("created_at")
+  updatedAt   DateTime? @map("updated_at")
+  user_id     String
+
+  user          User            @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  HabitDay      HabitDay[]
+  HabitWeekDays HabitWeekDays[]
+
+  @@map("habits")
+}
+
+model Goal {
+  id          String    @unique @default(uuid())
+  name        String
+  description String
+  user_id     String
+  createdAt   DateTime
+  updatedAt   DateTime?
+  day_id      String
+
+  user    User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  day     Day       @relation(fields: [day_id], references: [id], onDelete: Cascade)
+  GoalDay GoalDay[]
+}
+
+model GoalDay {
+  id      String @unique @default(uuid())
+  goal_id String
+  day_id  String
+
+  day  Day  @relation(fields: [day_id], references: [id], onDelete: Cascade)
+  goal Goal @relation(fields: [goal_id], references: [id], onDelete: Cascade)
+}
+
+model HabitDay {
+  id       String @unique @default(uuid())
+  habit_id String
+  day_id   String
+
+  day   Day   @relation(fields: [day_id], references: [id], onDelete: Cascade)
+  habit Habit @relation(fields: [habit_id], references: [id], onDelete: Cascade)
+}
+
+model Day {
+  id       String     @unique @default(uuid())
+  date     DateTime   @unique
+  HabitDay HabitDay[]
+  Goal     Goal[]
+  GoaltDay GoalDay[]
+}
+
+model HabitWeekDays {
+  id            String   @id @default(uuid())
+  habit_id      String
+  week_day      Int
+  timeInSeconds BigInt
+  createdAt     DateTime @map("created_at")
+
+  habit Habit @relation(fields: [habit_id], references: [id], onDelete: Cascade)
+
+  @@unique([habit_id, week_day])
+  @@map("habit_week_days")
+}
