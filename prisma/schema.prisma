@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgres://dia:!QAZ2wsx@diadia-server.postgres.database.azure.com:5432/postgres?sslmode=require"
 }
 
 model User {
