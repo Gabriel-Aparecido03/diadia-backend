@@ -27,9 +27,12 @@ describe('Fetch by date habit - Unit', () => {
 
     const res = await sut.execute({
       userId: user.id.toString(),
-      date : new Date()
+      date: new Date()
     })
 
-    expect(res).toHaveLength(30 || 31 || 28 || 29)
+    let today = new Date();
+    let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+    expect(res).toHaveLength(lastDayOfMonth.getDate())
   })
 })

@@ -43,7 +43,7 @@ describe('Fetch stats by month habit - E2E', () => {
       createdAt: date,
     })
 
-    const weekday1 = Weekday.create({ datetime: date, habitId: habit1.id, weekday: 0 })
+    const weekday1 = Weekday.create({ timeInSeconds: 1200, habitId: habit1.id, weekday: 0 })
 
     const weekdayList1 = new WeekdayList([weekday1])
     habit1.weekdays = weekdayList1

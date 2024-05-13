@@ -41,7 +41,7 @@ describe('Create Habit - E2E', () => {
         description: 'new-description',
         name: 'new-name',
         weekday: [{
-          datetime : new Date(),
+          timeInSeconds : 1200,
           weekday : 0
         }]
       })

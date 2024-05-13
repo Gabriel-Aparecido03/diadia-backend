@@ -67,7 +67,10 @@ describe('Fetch stats by month habit - E2E', () => {
       })
       .set('Authorization', `Bearer ${accessToken}`)
 
+    let today = new Date();
+    let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
     expect(response.status).toEqual(200)
-    expect(response.body).toHaveLength(30 || 31 || 28 || 29)
+    expect(response.body).toHaveLength(lastDayOfMonth.getDate())
   })
 })

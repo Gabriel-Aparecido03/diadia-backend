@@ -41,7 +41,7 @@ describe('Delete Habit - E2E', () => {
       createdAt : new Date(),
     })
 
-    const weekday = Weekday.create({ datetime : new Date(), habitId : habit.id, weekday : 0 })
+    const weekday = Weekday.create({ timeInSeconds : 1200, habitId : habit.id, weekday : 0 })
     
     const weekdayList1 = new WeekdayList([weekday])
     habit.weekdays = weekdayList1

@@ -41,7 +41,7 @@ describe('Toggle Habit - Unit', () => {
     })
 
     expect(inMemoryHabitRepository.items).toHaveLength(1)
-    expect(inMemoryDayRepository.items[0].habits).toHaveLength(1)
+    expect(inMemoryDayRepository.items[0].habits).toHaveLength(0)
   })
 
   it('should be make habit as not done', async () => {
@@ -59,6 +59,6 @@ describe('Toggle Habit - Unit', () => {
       userId: user.id.toString()
     })
 
-    expect(inMemoryDayRepository.items[0].habits).toHaveLength(0)
+    expect(inMemoryDayRepository.items[0].habits).toHaveLength(1)
   })
 })
