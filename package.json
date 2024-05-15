@@ -11,7 +11,7 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/src/infra/main",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts",
