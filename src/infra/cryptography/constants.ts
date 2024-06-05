@@ -1,5 +1,5 @@
 import 'dotenv'
 
 export const jwtConstants = {
-  secret: process.env.JWT_SECRET ?? "",
+  secret: "diadiadiaidiaidiadiasdajkfhbskjhfgshkjfgwsgvbfuwgv230421746210347 h9u2h4q974yv90734y5nv0",
 };
