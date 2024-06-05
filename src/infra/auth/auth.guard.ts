@@ -1,6 +1,5 @@
 import {
-  CanActivate, ExecutionContext, Injectable, UnauthorizedException,
-  ForbiddenException,
+  CanActivate, ExecutionContext, Injectable
 } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
