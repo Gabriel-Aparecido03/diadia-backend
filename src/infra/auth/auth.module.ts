@@ -7,7 +7,7 @@ import { JwtModule, JwtService } from "@nestjs/jwt";
       global: true,
       useFactory(...args) {
         return {
-          secret: process.env.JWT_SECRET,
+          secret: "12398120398130@2938109321@1029381093821@",
           signOptions: { expiresIn: '1 day' },
         }
       },
